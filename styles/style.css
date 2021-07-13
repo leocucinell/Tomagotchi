@@ -1,0 +1,31 @@
+body{
+    background-image: url("../assets/lilypads.png");
+    background-size: cover;
+}
+
+/* This container holds all the progress bars, with their icons
+    NOTE:
+    - Can scale to contain 4 easily
+*/
+.progress-container{
+    border: 1px solid black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.progress-bar{
+    margin: 0 5px 5px 5px;
+}
+progress{
+    
+}
+
+/* This container holds the image of the frog stage and the Frog Name */
+.character-container{
+    border: 1px solid black;
+}
+
+/* This container holds all the buttons that will be pressed to increase the progress bars */
+.buttons-container{
+    border: 1px solid black;
+}
