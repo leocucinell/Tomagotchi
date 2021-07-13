@@ -2,30 +2,100 @@ body{
     background-image: url("../assets/lilypads.png");
     background-size: cover;
 }
-
-/* This container holds all the progress bars, with their icons
+/* SECTION: The Welcome Screen
     NOTE:
-    - Can scale to contain 4 easily
+        - Will be the only thing displayed, then on submit, changes display to none.
+*/
+.welcome-screen{
+    background-color: antiquewhite;
+    display: block;
+    position: absolute;
+    top: calc(50% - 75px - 15px);
+    left: calc(50% - 150px - 15px);
+    width: 300px;
+    height: 150px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.welcome-input{
+    display: flex;
+    justify-content: space-between;
+}
+
+.welcome-screen input{
+    padding: 7px;
+    width: calc(50% + 15px);
+}
+
+.welcome-screen button{
+    padding: 7px 10px;
+    margin-right: 10px;
+}
+
+/* SECTION: This container holds all the progress bars, with their icons
+    NOTE:
+        - Can scale to contain 4 easily
 */
 .progress-container{
-    border: 1px solid black;
+    display: none;
+    /* border: 1px solid black; */
     text-align: center;
     display: flex;
     justify-content: center;
 }
 .progress-bar{
+    display: none;
     margin: 0 5px 5px 5px;
 }
-progress{
-    
-}
 
-/* This container holds the image of the frog stage and the Frog Name */
+/* SECTION: This container holds the image of the frog stage and the Frog Name 
+    NOTE: 
+        - the image and name are centered inside the container
+*/
 .character-container{
-    border: 1px solid black;
+    display: none;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.character-container img{
+    display: none;
+}
+.character-container h3{
+    display: none;
 }
 
-/* This container holds all the buttons that will be pressed to increase the progress bars */
+/* SECTION: This container holds all the buttons that will be pressed to increase the progress bars
+    NOTE:
+        - Button container can hold all 4 equally
+*/
 .buttons-container{
-    border: 1px solid black;
+    display: none;
+    /* border: 1px solid black; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons-container button{
+    display: none;
+    padding: 10px 20px;
+    margin: 10px;
+}
+
+/* Resizing elements to fit on phone screens */
+@media only screen and (max-width: 400px){
+    .progress-container{
+        flex-direction: column;
+    }
+    .character-container img{
+        width: 100px;
+        height: auto;
+    }
+    .buttons-container{
+        flex-direction: column;
+    }
 }

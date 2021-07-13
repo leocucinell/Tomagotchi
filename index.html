@@ -18,18 +18,31 @@
 </head>
 
 <body>
-    <div class="progress-container">
+    <!-- Welcome Screen, will be overlapping screen at beginning, then dissapear on submit -->
+    <div class="welcome-screen">
+        <div class="welcome-container">
+            <h1>Welcome to the pond!</h1>
+            <div class="welcome-input">
+                <input type="text" placeholder="Frog's name">
+                <button>submit</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="progress-container">
         <div class="progress-bar" id="temperature-bar">
             <h2>Temperature</h2>
             <progress max="100" value="80"></progress>
         </div>
-    </div>
+    </header>
+
     <div class="character-container">
         <img src="./assets/Frog Egg.png" alt="Frog Egg">
         <h3>Frog Name</h3>
     </div>
-    <div class="buttons-container">
+
+    <footer class="buttons-container">
         <button id="increase-temp">Increase Temperature</button>
-    </div>
+    </footer>
 </body>
 </html>
