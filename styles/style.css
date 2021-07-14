@@ -1,10 +1,12 @@
 body{
     background-image: url("../assets/lilypads.png");
     background-size: cover;
+    margin: 0;
+    padding: 0;
 }
+
 /* SECTION: The Welcome Screen
     NOTE:
-        - Will be the only thing displayed, then on submit, changes display to none.
 */
 .welcome-screen{
     background-color: rgba(0,0,0,0.9);
@@ -39,7 +41,6 @@ body{
 
 /* SECTION: This container holds all the progress bars, with their icons
     NOTE:
-        - Can scale to contain 4 easily
 */
 .progress-container{
 
@@ -55,7 +56,6 @@ body{
 
 /* SECTION: This container holds the image of the frog stage and the Frog Name 
     NOTE: 
-        - the image and name are centered inside the container
 */
 .character-container{
     /* border: 1px solid black; */
@@ -67,7 +67,6 @@ body{
 
 /* SECTION: This container holds all the buttons that will be pressed to increase the progress bars
     NOTE:
-        - Button container can hold all 4 equally
 */
 .buttons-container{
 
@@ -81,6 +80,20 @@ body{
 
     padding: 10px 20px;
     margin: 10px;
+}
+
+/* SECTION: The end screen is the final part of the game that is displayed
+    NOTE:
+*/
+.end-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.end-screen img{
+    width: 200px;
 }
 
 /* Resizing elements to fit on phone screens */

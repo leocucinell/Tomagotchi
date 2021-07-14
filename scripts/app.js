@@ -35,10 +35,6 @@ const mainGame = {
     ],
     timer: null,
     currentTime: 0,
-    tempTime: 100,
-    foodTime: 100,
-    waterTime: 100,
-    exerciseTime: 100,
     isDead: false,
 }
 
@@ -85,7 +81,10 @@ const game = function(){
     }
 
     //update the page for the User.
-    updatePage();
+    updateBars();
+
+    //check the progress bars for any zeros
+    checkZeros();
 }
 
 /* SECTION: Render Helper Methods
@@ -123,7 +122,7 @@ function renderStage(currentStage){
 /**
  * description: This page updates the progress bars currently on the page.
  */
-function updatePage(){
+function updateBars(){
     //grab a hold of each progress bar on the screen.
     // const currentValue = $(".progress-bar___main").val();
     // $(".progress-bar___main").val(currentValue - 10);
@@ -137,14 +136,37 @@ function updatePage(){
     });
 }
 
+function checkZeros(){
+    $(".progress-container").children().each(function(){
+        const current = $(this).children("progress");
+        const currentValue = current.val();
+        if(currentValue == 0){
+            //take all Items off screen.
+            //display grogu eating frog.
+            $("body").empty();
+            $("body").append(renderEndScreen);
+            
+
+        }
+    });
+}
+
+function renderEndScreen(){
+    return `
+        <div class="end-screen">
+            <h1>Oh No!</h1>
+            <h3>Baby yoda ate ${mainGame.userFrog}!</h3>
+            <img src="assets/endScreen.png" alt="Baby Yoda eating frog">
+            <p>refresh the page to play again</p>
+        </div>
+    `;
+}
+
 /* SECTION: Event Listeners for the buttons to increase the time of their respective progBar
     NOTE: just need to select the correct bars based on the clicked buttons
         - calling the event listener on the static parent to its dynamically created children
 */
 $(".buttons-container").on("click", "button", function(event){
-    //event.currentTarget.innerText -> The inner text of the button
-    //console.log($(`#${event.currentTarget.innerText}-bar`)); -> Grabs the corresponding bar div
-
     //If a button is clicked, update the value that the progress has to 100 again.
     $(`#${event.currentTarget.innerText}-bar`).children("progress").val(100);
 })
