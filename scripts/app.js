@@ -91,7 +91,7 @@ function renderStage(currentStage){
     //Adding Stage Buttons
     const $btnsLength = $(".buttons-container").children().length;
     if($btnsLength < currentStage.buttons.length){
-        //append the button & add an event listener
+        //append the button
         const currentBtn = currentStage.buttons[currentStage.buttons.length - 1];
         $(".buttons-container").append(`<button id="${currentBtn}-btn">${currentBtn}</button>`);
     }
@@ -103,13 +103,13 @@ function renderStage(currentStage){
         $(".progress-container").append(`
         <div class="progress-bar" id="${currentProg}-bar">
             <h2>${currentProg}</h2>
-            <progress class="progress-bar___main" max="100" value="100"></progress>
+            <progress id="FIXMe" class="progress-bar___main" max="100" value="100"></progress>
         </div>
         `);
     }
 
     //display the correct character
-    const $characterDisplay = $(".character-container").html(`
+    $(".character-container").html(`
         <img src="${currentStage.image}" alt="Frog Egg">
         <h3 id="pet-frog">${mainGame.userFrog}</h3>
     `);
@@ -117,7 +117,10 @@ function renderStage(currentStage){
 
 /* SECTION: Event Listeners for the buttons to increase the time of their respective progBar
     NOTE: just need to select the correct bars based on the clicked buttons
+        - calling the event listener on the static parent to its dynamically created children
 */
-function handleButtons(button){
-    
-}
+$(".buttons-container").on("click", "button", function(event){
+    //event.currentTarget.innerText -> The inner text of the button
+    //console.log($(`#${event.currentTarget.innerText}-bar`)); -> Grabs the corresponding bar div
+})
+
