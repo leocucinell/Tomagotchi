@@ -11,25 +11,25 @@ const mainGame = {
         {
             name: "Egg stage",
             progressBars: ["Temperature"],
-            buttons: ["Increase Temperature"],
+            buttons: ["Temperature"],
             image: "../assets/Frog Egg.png"
         },
         {
             name: "Tadpole stage",
             progressBars: ["Temperature", "Food"],
-            buttons: ["Increase Temperature", "Feed"],
+            buttons: ["Temperature", "Food"],
             image: "../assets/tadpole.png"
         },
         {
             name: "Froglett stage",
-            progressBars: ["Temperature", "Food", "Water Quality"],
-            buttons: ["Increase Temperature", "Feed", "Clean Water"],
+            progressBars: ["Temperature", "Food", "Water"],
+            buttons: ["Temperature", "Food", "Water"],
             image: "../assets/froglett.png"
         },
         {
             name: "Frog Stage",
-            progressBars: ["Temperature", "Food", "Water Quality", "Exercise"],
-            buttons: ["Increase Temperature", "Feed", "Clean Water", "Exercise"],
+            progressBars: ["Temperature", "Food", "Water", "Exercise"],
+            buttons: ["Temperature", "Food", "Water", "Exercise"],
             image: "../assets/frog.png"
         }
     ],
@@ -70,22 +70,34 @@ const game = function(){
     if(mainGame.isDead){
         //the frog has passed away because Grogu ate him
     } else if(mainGame.currentTime <= 30){
-        console.log(mainGame.stages[0]);
+        //frog is in the EGG STAGE
+        renderStage(mainGame.stages[0]);
     } else if(mainGame.currentTime > 30 && mainGame.currentTime <= 60){
-        console.log(mainGame.stages[1]);
+        //frog is in the TADPOLE STAGE
+        renderStage(mainGame.stages[1]);
     } else if(mainGame.currentTime > 60 && mainGame.currentTime <= 120){
-        console.log(mainGame.stages[2]);
+        //frog is in the FROGLETT STAGE
+        renderStage(mainGame.stages[2]);
     } else {
-        console.log(mainGame.stages[3]);
+        //frog is in the FROG STAGE (indefinite untill mainGame.isDead == true)
+        renderStage(mainGame.stages[3]);
     }
 
 }
 
 /* SECTION: Render Helper Methods
     NOTE: This section is to organize the render of the different stages of frog lifecycle
+    the current Stage is going to be the object stage from the mainGame OBJ. this is to 
+    isolate the amount of times the mapping of progress or button tags occurs.
 */
 function renderStage(currentStage){
-    //append the correct amount of progress bars to the .progress-container
-    //append the appropriate amount of buttons to the .buttons-container
-    
+    //.progress-container .buttons-container
+    //if the length of the buttons container is greater than the stage buttons length, dont do anything
+    //else, append the last element of the array to the buttons container
+    console.log(mainGame.currentTime);
+    const $btnsLength = $(".buttons-container").children().length;
+    if($btnsLength < currentStage.buttons.length){
+        const currentBtn = currentStage.buttons[currentStage.buttons.length - 1];
+        $(".buttons-container").append(`<button id="${currentBtn}">${currentBtn}</button>`)
+    }
 }
