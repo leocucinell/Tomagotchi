@@ -94,10 +94,20 @@ function renderStage(currentStage){
     //.progress-container .buttons-container
     //if the length of the buttons container is greater than the stage buttons length, dont do anything
     //else, append the last element of the array to the buttons container
-    console.log(mainGame.currentTime);
     const $btnsLength = $(".buttons-container").children().length;
     if($btnsLength < currentStage.buttons.length){
         const currentBtn = currentStage.buttons[currentStage.buttons.length - 1];
-        $(".buttons-container").append(`<button id="${currentBtn}">${currentBtn}</button>`)
+        $(".buttons-container").append(`<button id="${currentBtn}-btn">${currentBtn}</button>`)
+    }
+
+    const $progressLength = $(".progress-container").children().length;
+    if($progressLength < currentStage.progressBars.length){
+        const currentProg = currentStage.progressBars[currentStage.progressBars.length - 1];
+        $(".progress-container").append(`
+        <div class="progress-bar" id="${currentProg}-bar">
+            <h2>${currentProg}</h2>
+            <progress class="progress-bar___main" max="100" value="100"></progress>
+        </div>
+        `);
     }
 }
