@@ -12,25 +12,25 @@ const mainGame = {
             name: "Egg stage",
             progressBars: ["Temperature"],
             buttons: ["Temperature"],
-            image: "../assets/Frog Egg.png"
+            image: "assets/Frog Egg.png"
         },
         {
             name: "Tadpole stage",
             progressBars: ["Temperature", "Food"],
             buttons: ["Temperature", "Food"],
-            image: "../assets/tadpole.png"
+            image: "assets/tadpole.png"
         },
         {
             name: "Froglett stage",
             progressBars: ["Temperature", "Food", "Water"],
             buttons: ["Temperature", "Food", "Water"],
-            image: "../assets/froglett.png"
+            image: "assets/froglett.jpeg"
         },
         {
             name: "Frog Stage",
             progressBars: ["Temperature", "Food", "Water", "Exercise"],
             buttons: ["Temperature", "Food", "Water", "Exercise"],
-            image: "../assets/frog.png"
+            image: "assets/frog.jpeg"
         }
     ],
     timer: null,
@@ -50,8 +50,6 @@ $("#frog-submit").on("click", function(){
     mainGame.userFrog = $nameField.val();
     //make the welcome screen disapear
     $(".welcome-screen").css("display", "none");
-    //update the text within the egg screen
-    $("#pet-frog").text(mainGame.userFrog);
     //run the game code in an interval
     mainGame.timer = setInterval(game, 1000);
 });
@@ -86,20 +84,19 @@ const game = function(){
 }
 
 /* SECTION: Render Helper Methods
-    NOTE: This section is to organize the render of the different stages of frog lifecycle
-    the current Stage is going to be the object stage from the mainGame OBJ. this is to 
-    isolate the amount of times the mapping of progress or button tags occurs.
+    NOTE: if the length of the buttons container is greater than the stage buttons length, 
+    dont do anything else, append the last element of the array to the buttons container
 */
 function renderStage(currentStage){
-    //.progress-container .buttons-container
-    //if the length of the buttons container is greater than the stage buttons length, dont do anything
-    //else, append the last element of the array to the buttons container
+    //Adding Stage Buttons
     const $btnsLength = $(".buttons-container").children().length;
     if($btnsLength < currentStage.buttons.length){
+        //append the button & add an event listener
         const currentBtn = currentStage.buttons[currentStage.buttons.length - 1];
-        $(".buttons-container").append(`<button id="${currentBtn}-btn">${currentBtn}</button>`)
+        $(".buttons-container").append(`<button id="${currentBtn}-btn">${currentBtn}</button>`);
     }
 
+    //Adding Stage Progress Bars
     const $progressLength = $(".progress-container").children().length;
     if($progressLength < currentStage.progressBars.length){
         const currentProg = currentStage.progressBars[currentStage.progressBars.length - 1];
@@ -110,4 +107,17 @@ function renderStage(currentStage){
         </div>
         `);
     }
+
+    //display the correct character
+    const $characterDisplay = $(".character-container").html(`
+        <img src="${currentStage.image}" alt="Frog Egg">
+        <h3 id="pet-frog">${mainGame.userFrog}</h3>
+    `);
+}
+
+/* SECTION: Event Listeners for the buttons to increase the time of their respective progBar
+    NOTE: just need to select the correct bars based on the clicked buttons
+*/
+function handleButtons(button){
+    
 }
