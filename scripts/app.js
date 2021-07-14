@@ -35,7 +35,11 @@ const mainGame = {
     ],
     timer: null,
     currentTime: 0,
-    isDead: false
+    tempTime: 100,
+    foodTime: 100,
+    waterTime: 100,
+    exerciseTime: 100,
+    isDead: false,
 }
 
 /* SECTION: Welcome Screen
@@ -64,7 +68,6 @@ const game = function(){
 
     //check to see how much time has passed or if the frog died :-(
     //based on that time, render out different progress bars
-
     if(mainGame.isDead){
         //the frog has passed away because Grogu ate him
     } else if(mainGame.currentTime <= 30){
@@ -81,6 +84,8 @@ const game = function(){
         renderStage(mainGame.stages[3]);
     }
 
+    //update the page for the User.
+    updatePage();
 }
 
 /* SECTION: Render Helper Methods
@@ -103,7 +108,7 @@ function renderStage(currentStage){
         $(".progress-container").append(`
         <div class="progress-bar" id="${currentProg}-bar">
             <h2>${currentProg}</h2>
-            <progress id="FIXMe" class="progress-bar___main" max="100" value="100"></progress>
+            <progress id="${currentProg}" class="progress-bar___main" max="100" value="100"></progress>
         </div>
         `);
     }
@@ -115,6 +120,23 @@ function renderStage(currentStage){
     `);
 }
 
+/**
+ * description: This page updates the progress bars currently on the page.
+ */
+function updatePage(){
+    //grab a hold of each progress bar on the screen.
+    // const currentValue = $(".progress-bar___main").val();
+    // $(".progress-bar___main").val(currentValue - 10);
+
+    //loop through the list of children in the progress container
+    //save the current value the have (probably in mainGame) and subtract ten from it each second
+    $(".progress-container").children().each(function(){
+        const current = $(this).children("progress");
+        const currentValue = current.val();
+        current.val(currentValue - 10);
+    });
+}
+
 /* SECTION: Event Listeners for the buttons to increase the time of their respective progBar
     NOTE: just need to select the correct bars based on the clicked buttons
         - calling the event listener on the static parent to its dynamically created children
@@ -122,5 +144,7 @@ function renderStage(currentStage){
 $(".buttons-container").on("click", "button", function(event){
     //event.currentTarget.innerText -> The inner text of the button
     //console.log($(`#${event.currentTarget.innerText}-bar`)); -> Grabs the corresponding bar div
+
+    //If a button is clicked, update the value that the progress has to 100 again.
 })
 
