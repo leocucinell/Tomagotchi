@@ -146,5 +146,6 @@ $(".buttons-container").on("click", "button", function(event){
     //console.log($(`#${event.currentTarget.innerText}-bar`)); -> Grabs the corresponding bar div
 
     //If a button is clicked, update the value that the progress has to 100 again.
+    $(`#${event.currentTarget.innerText}-bar`).children("progress").val(100);
 })
 
