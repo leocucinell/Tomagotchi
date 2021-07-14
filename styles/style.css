@@ -7,30 +7,34 @@ body{
         - Will be the only thing displayed, then on submit, changes display to none.
 */
 .welcome-screen{
-    background-color: antiquewhite;
+    background-color: rgba(0,0,0,0.9);
     display: block;
     position: absolute;
-    top: calc(50% - 75px - 15px);
-    left: calc(50% - 150px - 15px);
-    width: 300px;
-    height: 150px;
+    width: 100vw;
+    height: 100vh;
     padding: 15px;
     border-radius: 5px;
 }
 
+.welcome-screen h1{
+    text-align: center;
+    color: white;
+}
+
 .welcome-input{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 
 .welcome-screen input{
     padding: 7px;
-    width: calc(50% + 15px);
+    width: 80%;
 }
 
 .welcome-screen button{
     padding: 7px 10px;
-    margin-right: 10px;
+    margin-top: 10px;
 }
 
 /* SECTION: This container holds all the progress bars, with their icons
@@ -38,14 +42,14 @@ body{
         - Can scale to contain 4 easily
 */
 .progress-container{
-    display: none;
+
     /* border: 1px solid black; */
     text-align: center;
     display: flex;
     justify-content: center;
 }
 .progress-bar{
-    display: none;
+
     margin: 0 5px 5px 5px;
 }
 
@@ -54,7 +58,6 @@ body{
         - the image and name are centered inside the container
 */
 .character-container{
-    display: none;
     /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
@@ -62,10 +65,10 @@ body{
     justify-content: center;
 }
 .character-container img{
-    display: none;
+
 }
 .character-container h3{
-    display: none;
+
 }
 
 /* SECTION: This container holds all the buttons that will be pressed to increase the progress bars
@@ -73,7 +76,7 @@ body{
         - Button container can hold all 4 equally
 */
 .buttons-container{
-    display: none;
+
     /* border: 1px solid black; */
     text-align: center;
     display: flex;
@@ -81,7 +84,7 @@ body{
 }
 
 .buttons-container button{
-    display: none;
+
     padding: 10px 20px;
     margin: 10px;
 }
