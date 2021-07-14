@@ -168,6 +168,7 @@ function renderEndScreen(){
 */
 $(".buttons-container").on("click", "button", function(event){
     //If a button is clicked, update the value that the progress has to 100 again.
-    $(`#${event.currentTarget.innerText}-bar`).children("progress").val(100);
+    const current = $(`#${event.currentTarget.innerText}-bar`).children("progress").val()
+    $(`#${event.currentTarget.innerText}-bar`).children("progress").val(current + 20);
 })
 
