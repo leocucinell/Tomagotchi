@@ -9,7 +9,11 @@ This game was made as an exploration into using objects to structure overall dat
 
 ## Wireframe
 Wiframe/mockup was done through figma
-![the tadpole screen](assets/Egg-frame.png)
+![the egg screen](assets/Egg-frame.png)
+![the tadpole screen](assets/Tadpole-frame.png)
+![the froglett screen](assets/Froglett-frame.png)
+![the frog screen](assets/Frog-frame.png)
+
 
 ## User Story
 The user is greeted with a welcome screen containing a box saying “Welcome to the pond!”. Underneath the greeting is an input where the user will input their frog’s name with a submit button next to it. The welcome screen itself is an opaque black background and the box with the message & input.
