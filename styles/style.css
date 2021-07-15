@@ -4,10 +4,14 @@ body{
     margin: 0;
 }
 
-/* SECTION: The page content
+/* SECTION: The game content
     NOTE:
 */
-
+.game-content{
+    background: rgba(255, 255, 240, 0.9);
+    margin: 20px;
+    border-radius: 10px;
+}
 
 /* SECTION: The Welcome Screen
     NOTE:
@@ -111,5 +115,8 @@ body{
     }
     .buttons-container{
         flex-direction: column;
+    }
+    .progress-bar h2{
+        font-size: 0.9em;
     }
 }

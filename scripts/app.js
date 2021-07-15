@@ -35,7 +35,6 @@ const mainGame = {
     ],
     timer: null,
     currentTime: 0,
-    isDead: false,
 }
 
 /* SECTION: Welcome Screen
@@ -51,7 +50,7 @@ $("#frog-submit").on("click", function(){
     //make the welcome screen disapear
     $(".welcome-screen").css("display", "none");
     //run the game code in an interval
-    mainGame.timer = setInterval(game, 1000);
+    mainGame.timer = setInterval(game, 1000); 
 });
 
 /* SECTION: The Game
@@ -64,9 +63,7 @@ const game = function(){
 
     //check to see how much time has passed or if the frog died :-(
     //based on that time, render out different progress bars
-    if(mainGame.isDead){
-        //the frog has passed away because Grogu ate him
-    } else if(mainGame.currentTime <= 30){
+    if(mainGame.currentTime <= 30){
         //frog is in the EGG STAGE
         renderStage(mainGame.stages[0]);
     } else if(mainGame.currentTime > 30 && mainGame.currentTime <= 60){
