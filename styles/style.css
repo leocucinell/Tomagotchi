@@ -73,6 +73,10 @@ body{
     justify-content: center;
 }
 
+.character-container img{
+    max-height: 300px;
+}
+
 /* SECTION: This container holds all the buttons that will be pressed to increase the progress bars
     NOTE:
 */

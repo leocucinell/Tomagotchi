@@ -6,7 +6,6 @@ console.log($);
 */
 const mainGame = {
     userFrog: "Hoppy",
-    userStage: 1, //I migtht not need this... just use the amount of time passed
     stages:[
         {
             name: "Egg stage",
@@ -48,9 +47,14 @@ $("#frog-submit").on("click", function(){
     //update the frog name
     mainGame.userFrog = $nameField.val();
     //make the welcome screen disapear
-    $(".welcome-screen").css("display", "none");
+    //$(".welcome-screen").css("display", "none");
+
+    $(".welcome-screen").animate({opacity: 0}, 1000, function(){
+        $(".welcome-screen").css("display", "none");
+    });
+    mainGame.timer = setInterval(game, 1000);
     //run the game code in an interval
-    mainGame.timer = setInterval(game, 1000); 
+     
 });
 
 /* SECTION: The Game
@@ -153,6 +157,7 @@ function renderEndScreen(){
             <h3>Baby yoda ate ${mainGame.userFrog}!</h3>
             <img src="assets/endScreen.png" alt="Baby Yoda eating frog">
             <p>refresh the page to play again</p>
+            <button id="play-again___button">play again?</button>
         </div>
     `;
 }
@@ -165,5 +170,14 @@ $(".buttons-container").on("click", "button", function(event){
     //If a button is clicked, update the value that the progress has to 100 again.
     const current = $(`#${event.currentTarget.innerText}-bar`).children("progress").val()
     $(`#${event.currentTarget.innerText}-bar`).children("progress").val(current + 20);
-})
+});
+
+//FIXME: Reload game event listener not attaching to the .end-screen #play-again___button
+$(".end-screen").on("click", "button", function(event){
+    console.log("~~~~Hello!~~~~ " + event);
+    $(".welcome-screen").animate({opacity: 1}, 1000, function(){
+        $(".welcome-screen").css("display", "block");
+    });
+    mainGame.timer = setInterval(game, 1000);
+});
 

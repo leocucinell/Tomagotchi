@@ -5,7 +5,7 @@ A simple Tomagotchi like game using the lifecycle of a frog
 <Insert game URL>
 
 ## Description
-This game was made as an exploration into using objects to structure overall data / or state of a game. The object would then be manipulated through functional programming to determine different outcomes along the games path. 
+This game was made as an exploration into using objects and Jquery to structure overall data / or state of a game and grab / manipulate dom elements respectively. The object would then be manipulated through functional programming to determine different outcomes along the games path. 
 
 ## Wireframe
 Wiframe/mockup was done through figma
