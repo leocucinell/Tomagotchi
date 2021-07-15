@@ -2,32 +2,25 @@ body{
     background-image: url("../assets/lilypads.png");
     background-size: cover;
     margin: 0;
-    padding: 0;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vh;
-    height: 100vh; */
 }
 
 /* SECTION: The page content
     NOTE:
 */
-.all-content{
 
-}
 
 /* SECTION: The Welcome Screen
     NOTE:
 */
 .welcome-screen{
     background-color: rgba(0,0,0,0.9);
-    display: block;
-    /* position: absolute; */
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    width: 50vw;
+    height: 35vh;
     padding: 15px;
     border-radius: 5px;
+    top: calc(50% - 25vh);
+    left: calc(50% - 30vw);
 }
 
 .welcome-screen h1{

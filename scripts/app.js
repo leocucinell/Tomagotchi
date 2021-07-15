@@ -145,8 +145,6 @@ function checkZeros(){
             //display grogu eating frog.
             $("body").empty();
             $("body").append(renderEndScreen);
-            
-
         }
     });
 }
