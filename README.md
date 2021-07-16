@@ -2,7 +2,7 @@
 A simple Tomagotchi like game using the lifecycle of a frog
 
 ## Game Link
-<Insert game URL>
+https://leocucinell.github.io/tomagotchi/
 
 ## Description
 This game was made as an exploration into using objects and Jquery to structure overall data / or state of a game and grab / manipulate dom elements respectively. The object would then be manipulated through functional programming to determine different outcomes along the games path. 
