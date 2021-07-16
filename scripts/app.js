@@ -150,6 +150,7 @@ function renderStage(currentStage){
     $(".character-container").html(`
         <img src="${currentStage.image}" alt="Frog Egg">
         <h3 id="pet-frog">${mainGame.userFrog}</h3>
+        <button class="pet-button">Pet</button>
         <p class="frog fact">${mainGame.currentFact}</p>
     `);
 }
@@ -214,4 +215,10 @@ $(".end-screen").on("click", "button", function(event){
     // });
     // mainGame.timer = setInterval(game, 1000);
 });
+
+$(".character-container").on("click", "button", function(){
+    //grab the image 
+    const $charImage = $(".character-container img");
+    $charImage.effect("bounce", {times:3}, 300)
+})
 
