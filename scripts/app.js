@@ -1,6 +1,34 @@
 console.log("Hello Pond!")
 console.log($);
 
+//getting random frog facts to display on screen (every 5 seconds cycle)
+const frogFacts = [
+    "Frogs absorb water through their skin so they don't need to drink.",
+    "Frogs can lay as many as 4,000 eggs in frogspawn.",
+    "The eyes and nose of a frog are on top of its head so it can breathe and see when most of its body is under the water.",
+    "Frogs have long back legs and webbed feet for jumping and swimming.",
+    "Certain frogs can jump up to 20 times their own body length in a single leap.",
+    "Frogs usually eat meat (bugs and worms) and swallow their food whole.",
+    "The world's biggest frog is the goliath frog from Cameroon in West Africa. Their body can be one-foot long.",
+    "The smallest frogs in the world are less than half-an-inch long.",
+    "In the Seychelles, there is a male frog that carries its young around on its back until they become adults.",
+    "People who study frogs and toads are called herpetologists. Herpetology is the study of amphibians and reptiles.",
+    "Frog bones form a new ring every year when the frog is hibernating, just like trees do. Scientists can count these rings to discover the age of the frog.",
+    "Because frogs come out in the rain, people used to think that they fell to earth in the rain! And in nineteenth century England, people tried catching them to prove it.",
+    "One type of desert frog can wait as long as seven years for water by surrounding itself in a type of transparent bag that becomes its first meal once the rain comes.",
+    "Amphibians' eyes come in all shapes and sizes. Some even have square or heart shaped pupils. But amphibians don't see color -- they only see in black or white.",
+    "The golden dart frog is the most poisonous frog on earth and the skin of one frog could kill up to 1,000 people.",
+    "In recent years, a painkiller with 200 times the power of morphine has been found in the skin of a frog.",
+    "The male Darwins Frog takes its mate's eggs into its mouth as soon as they show signs of life and they stay there until they emerge as fully grown froglets.",
+    "Frogs cannot live in the sea or any salt water.",
+    "There are more than 4,000 types of amphibians in the world, but Europe has very few--only 45 species.",
+    "Many of the most brightly colored tropical frogs are colored in this way to warn predators that they are poisonous."
+];
+function getFrogFact(){
+    const num = Math.floor(Math.random() * frogFacts.length);
+    return frogFacts[num];
+}
+
 /* SECTION: The Game Object 
     NOTE: This object contains all the different stages of the frogs life
 */
@@ -34,6 +62,7 @@ const mainGame = {
     ],
     timer: null,
     currentTime: 0,
+    currentFact: getFrogFact(),
 }
 
 /* SECTION: Welcome Screen
@@ -113,10 +142,15 @@ function renderStage(currentStage){
         `);
     }
 
-    //display the correct character
+
+    //display the correct character & frog fact if time % 5 == 0
+    if(mainGame.currentTime % 8 == 0){
+        mainGame.currentFact = getFrogFact();
+    }
     $(".character-container").html(`
         <img src="${currentStage.image}" alt="Frog Egg">
         <h3 id="pet-frog">${mainGame.userFrog}</h3>
+        <p class="frog fact">${mainGame.currentFact}</p>
     `);
 }
 
@@ -151,13 +185,13 @@ function checkZeros(){
 }
 
 function renderEndScreen(){
+    //<button id="play-again___button">play again?</button> //FIXME: Will when working on button
     return `
         <div class="end-screen">
             <h1>Oh No!</h1>
             <h3>Baby yoda ate ${mainGame.userFrog}!</h3>
             <img src="assets/endScreen.png" alt="Baby Yoda eating frog">
             <p>refresh the page to play again</p>
-            <button id="play-again___button">play again?</button>
         </div>
     `;
 }
@@ -175,9 +209,9 @@ $(".buttons-container").on("click", "button", function(event){
 //FIXME: Reload game event listener not attaching to the .end-screen #play-again___button
 $(".end-screen").on("click", "button", function(event){
     console.log("~~~~Hello!~~~~ " + event);
-    $(".welcome-screen").animate({opacity: 1}, 1000, function(){
-        $(".welcome-screen").css("display", "block");
-    });
-    mainGame.timer = setInterval(game, 1000);
+    // $(".welcome-screen").animate({opacity: 1}, 1000, function(){
+    //     $(".welcome-screen").css("display", "block");
+    // });
+    // mainGame.timer = setInterval(game, 1000);
 });
 

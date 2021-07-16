@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 body{
     background-image: url("../assets/lilypads.png");
     background-size: cover;
     margin: 0;
+    cursor: url("assets/lady-bug.png");
+    font-family: Montserrat
 }
 
 /* SECTION: The game content
@@ -41,11 +45,17 @@ body{
 .welcome-screen input{
     padding: 7px;
     width: 80%;
+    margin-top: 8px;
 }
 
 .welcome-screen button{
-    padding: 7px 10px;
+    padding: 12px 15px;
     margin-top: 10px;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 15%;
 }
 
 /* SECTION: This container holds all the progress bars, with their icons
@@ -75,6 +85,11 @@ body{
 
 .character-container img{
     max-height: 300px;
+}
+
+.character-container p {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 /* SECTION: This container holds all the buttons that will be pressed to increase the progress bars
@@ -122,5 +137,11 @@ body{
     }
     .progress-bar h2{
         font-size: 0.9em;
+    }
+    .welcome-screen button{
+        bottom: 10px;
+    }
+    .welcome-screen input{
+        margin-top: -10px;
     }
 }
