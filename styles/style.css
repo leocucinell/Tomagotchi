@@ -92,6 +92,10 @@ body{
     margin-right: 5px;
 }
 
+.character-container button {
+    padding: 7px 12px;
+}
+
 /* SECTION: This container holds all the buttons that will be pressed to increase the progress bars
     NOTE:
 */
